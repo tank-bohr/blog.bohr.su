@@ -73,7 +73,7 @@ How does `CONNECT` method work? `CONNECT` method is an appeal to server to estab
 
 Now we are using `{packet, raw}` because it's not really our business what traffic will go to the target host. Most likely it will be an ecrypted https-traffic. Thus it's just bytes for us.
 
-After tunnel connection is established we should notify client that COONECT requst is over an it can start sending the main request. Also we need to change socket mode from `http` to `raw` for client socket as well
+After tunnel connection is established we should notify client that CONNECT requst is over an it can start sending the main request. Also we need to change socket mode from `http` to `raw` for client socket as well
 
 {% highlight erlang %}
 ok = inet:setopts(ClientSocket, [{packet, raw}]),
