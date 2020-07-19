@@ -11,9 +11,9 @@ There are two types of proxies
 
 Reverse proxies could be easily implemented with [vegur](https://github.com/heroku/vegur)/[cowboyku](https://github.com/heroku/cowboyku) from heroku. cowboyku is a heroku fork of cowboy webserver created exactly for building reverse proxies in erlang. It is used in heroku for [http routing](https://devcenter.heroku.com/articles/http-routing) feature.
 
-For forward proxies it's a little bit tricky. None of popular erlang webservers does not support `CONNECT` method. Let's eloborate how to do this from scratch.
+For forward proxies, it's a little bit tricky. None of the popular erlang webservers does support `CONNECT` method. Let's elaborate on how to do this from scratch.
 
-First of all we need to start to listen a tcp port
+First of all, we need to start to listen to a tcp port
 
 {% highlight erlang %}
 {ok, ListenSocket} = gen_tcp:listen(3128, [
@@ -36,7 +36,7 @@ Once we have a listen socket, we can accept connections from a client
 
 Accept is a blocking operation. It will wait for a client as long as needed.
 
-Once we have a client socket, we can begin an exchange of bytes via tcp with the client. For this we will need some data structure to accamulate data related to request. The most natural for erlang is to use record for this purpose
+Once we have a client socket, we can begin an exchange of bytes via tcp with the client. For this, we will need some data structure to accumulate data related to the request. The most natural for erlang is to use the record for this purpose
 
 {% highlight erlang %}
 -record(request, {
@@ -45,7 +45,7 @@ Once we have a client socket, we can begin an exchange of bytes via tcp with the
 }).
 {% endhighlight %}
 
-Besides uri we also want to preserve headers. If we will want to introduce authentication to our proxy, we will need those header. Becasue credentials are passed in `Proxy-Authentication` header.
+Besides uri, we also want to preserve headers. If we will want to introduce authentication to our proxy, we will need those headers. Because credentials are passed in the `Proxy-Authentication` header.
 
 
 Thanks to `{packet, http}` we don't have to parse any http-traffic and we are able to receive ready http messages
@@ -62,25 +62,25 @@ recv_loop(ClientSocket, #request{headers = Headers} = Request) ->
     end.
 {% endraw %}{% endhighlight %}
 
-We deliberately do not match other methods to keep only essence of the process. We are only interested in `CONNECT` method because we are building proxy now, not regular web-server.
+We deliberately do not match other methods to keep the only essence of the process. We are only interested in `CONNECT` method because we are building proxy now, not a regular web-server.
 
-How does `CONNECT` method work? `CONNECT` method is an appeal to server to establish tunnel connection with a target host and resend all the data it receives.
+How does `CONNECT` method work? `CONNECT` method is an appeal to the server to establish a tunnel connection with a target host and resend all the data it receives.
 
 {% highlight erlang %}
 {scheme, Host, Port} = Request#request.uri,
 {ok, ServerSocket} = gen_tcp:connect(Host, list_to_integer(Port), [{packet, raw}, {active, false}].
 {% endhighlight %}
 
-Now we are using `{packet, raw}` because it's not really our business what traffic will go to the target host. Most likely it will be an ecrypted https-traffic. Thus it's just bytes for us.
+Now we are using `{packet, raw}` because it's not our business what traffic will go to the target host. Most likely it will be an encrypted https-traffic. Thus it's just bytes for us.
 
-After tunnel connection is established we should notify client that CONNECT requst is over an it can start sending the main request. Also we need to change socket mode from `http` to `raw` for client socket as well
+After tunnel connection is established we should notify a client that CONNECT request is over and it can start sending the main request. Also, we need to change socket mode from `http` to `raw` for client socket as well
 
 {% highlight erlang %}
 ok = inet:setopts(ClientSocket, [{packet, raw}]),
 ok = gen_tcp:send(ClientSocket, <<"HTTP/1.1 200 OK\r\n\r\n">>).
 {% endhighlight %}
 
-Well, Everything is ready for proxy. But there is a little problem here. Due to we don't know the nature of traffic and protocol between client and server, we cannot know when to stop receiving data from the client and start sending to the server and vice versa. But client and server knows. So we have to do client-server transfer and server-client transfer and the same time until the sockets will be closed.
+Well, Everything is ready for proxy. But there is a little problem here. Due to we don't know the nature of traffic and protocol between client and server, we cannot know when to stop receiving data from the client and start sending it to the server and vice versa. But the client and server know. So we have to do a client-server transfer and server-client transfer and at the same time until the sockets will be closed.
 
 {% highlight erlang %}{% raw %}
 proxy(ClientSocket, ServerSocket) ->
