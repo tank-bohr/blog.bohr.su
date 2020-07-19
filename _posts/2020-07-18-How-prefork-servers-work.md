@@ -159,10 +159,11 @@ end
 
 can be replaced with the neat ruby syntax: [fork](https://ruby-doc.org/core-2.7.1/Process.html#method-c-fork) with block.
 
-As one can see it' the most direct way to implement our service. Thus it's awful in a sense of style and best engineering practices. A lot of things require refactoring. So it can be a good refactoring kata.
+As one can see it' the most direct way to implement our service. Thus it's awful in a sense of style and best engineering practices. A lot of things require refactoring. So it can be a good [refactoring kata](https://github.com/tank-bohr/jubilant-computing-machine).
 
 The last thing I wanted to mention is that we now have an almost ready [unicorn webserver](http://unicorn.bogomips.org/) in less than 50 loc. The only thing missing is the http parser. For http-parser unicorn and puma use [ragel](http://www.colm.net/open-source/ragel/) to generate c-code. Http-parser should be blazing fast.
 
 ### Related links:
 
+- [Prefork server as a kata](https://github.com/tank-bohr/jubilant-computing-machine)
 - [Unicorn Unix Magic Tricks](https://www.youtube.com/watch?v=DGhlQomeqKc) (video)
