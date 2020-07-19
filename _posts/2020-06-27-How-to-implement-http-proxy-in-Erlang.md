@@ -11,7 +11,7 @@ There are two types of proxies
 
 Reverse proxies could be easily implemented with [vegur](https://github.com/heroku/vegur)/[cowboyku](https://github.com/heroku/cowboyku) from heroku. cowboyku is a heroku fork of cowboy webserver created exactly for building reverse proxies in erlang. It is used in heroku for [http routing](https://devcenter.heroku.com/articles/http-routing) feature.
 
-For forward proxies it's a little bit tricky. None of popular erlang webservers does not support `CONNECT` method. Let's eloborate how to do it his from scratch.
+For forward proxies it's a little bit tricky. None of popular erlang webservers does not support `CONNECT` method. Let's eloborate how to do this from scratch.
 
 First of all we need to start to listen a tcp port
 
