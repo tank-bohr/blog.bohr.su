@@ -12,7 +12,7 @@ require 'socket'
 socket = Socket.new(:INET, :STREAM)
 {% endhighlight %}
 
-Ruby standard library has very thin [wrapper](https://ruby-doc.org/stdlib-2.7.1/libdoc/socket/rdoc/index.html) around [socket](https://man7.org/linux/man-pages/man2/socket.2.html) system call. Thus it allows us to do very low-level stuff in the very high-level programming language. Which is realy cool!
+Ruby standard library has very thin [wrapper](https://ruby-doc.org/stdlib-2.7.1/libdoc/socket/rdoc/index.html) around [socket](https://man7.org/linux/man-pages/man2/socket.2.html) system call. Thus it allows us to do very low-level stuff in a very high-level programming language. Which is really cool!
 
 The next step is to make a [listen](https://man7.org/linux/man-pages/man2/listen.2.html) syscall.
 
