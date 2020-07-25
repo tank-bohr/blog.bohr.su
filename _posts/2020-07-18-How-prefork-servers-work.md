@@ -1,3 +1,8 @@
+---
+layout: post
+title:  "How prefork servers work"
+date:   2020-07-18 21:00:00 +0300
+---
 
 Let's imagine we want to create a new shiny service. Let's say "Reverse string As A Service" or RAAS. And for some reason, we want to do it from scratch.
 First of all, we need a socket to receive connections.
@@ -165,5 +170,6 @@ The last thing I wanted to mention is that we now have an almost ready [unicorn 
 
 ### Related links:
 
+- [The second part]({{"2020/07/25/How-reactor-works.html"|absolute_url}})
 - [Prefork server as a kata](https://github.com/tank-bohr/jubilant-computing-machine)
 - [Unicorn Unix Magic Tricks](https://www.youtube.com/watch?v=DGhlQomeqKc) (video)
