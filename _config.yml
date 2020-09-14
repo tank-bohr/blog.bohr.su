@@ -27,6 +27,12 @@ url: "https://blog.bohr.su" # the base hostname & protocol for your site, e.g. h
 twitter_username: tank_bohr
 github_username:  tank-bohr
 
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true
+
 # Build settings
 theme: minima
 plugins:
