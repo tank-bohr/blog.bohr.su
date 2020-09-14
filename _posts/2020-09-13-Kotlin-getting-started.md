@@ -60,7 +60,7 @@ After:
 distributionUrl=https\://services.gradle.org/distributions/gradle-6.6.1-bin.zip
 ```
 
-Thus we change gradle version from v6.1.1 to v6.6.1. After it, IDEA will to the rest for you.
+Thus we change gradle version from v6.1.1 to v6.6.1. After it, IDEA will do the rest for you.
 
 ## Hello world
 
