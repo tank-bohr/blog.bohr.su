@@ -214,7 +214,7 @@ You can run tests from IDE or from the console with
 $ ./gradlew test
 ```
 
-I also recommend you to consider [Kotest](https://kotest.io/) as it looks very nice
+I also encourage you to consider [Kotest](https://kotest.io/) as it looks very nice
 
 
 ## Adding linter
