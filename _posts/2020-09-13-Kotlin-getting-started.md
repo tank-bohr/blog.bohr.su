@@ -137,7 +137,7 @@ Hello world!
 
 Awesome. You see how application plugin generated script to run our app and grandmotherly put it the `bin` directory.
 
-It is also possible to [create a single all-in-one jar file](https://stackoverflow.com/a/44202463) which can be launched with command `java -jar kronstadt.jar`, but it's not idiomatic.
+It is also possible to [create a single all-in-one jar file](https://stackoverflow.com/a/44202463) (aka uberjar) which can be launched with command `java -jar kronstadt.jar`, but it's not idiomatic.
 
 ## Adding tests
 
