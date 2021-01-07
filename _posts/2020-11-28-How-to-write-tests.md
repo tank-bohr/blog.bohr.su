@@ -83,3 +83,4 @@ The classic approach is a [test pyramid](https://martinfowler.com/bliki/TestPyra
 - book [Growing Object-Oriented Software, Guided by Tests](https://www.amazon.com/Growing-Object-Oriented-Software-Guided-Tests/dp/0321503627) by Steve Freeman and Nat Pryce
 - book [Test Driven Development: By Example](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530) by Kent Beck
 - book [PropEr Testing](https://propertesting.com/) by Fred Hebert
+- [Software Testing Guide](https://martinfowler.com/testing/) by Martin Fowler
