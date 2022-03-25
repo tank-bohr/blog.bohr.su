@@ -45,7 +45,7 @@ minima:
   social_links:
     twitter: tank_bohr
     github:  tank-bohr
-    linkedin: https://www.linkedin.com/in/alexey-nikitin-652656105/
+    linkedin: alexey-nikitin-652656105
 
 plugins:
   - jekyll-feed
